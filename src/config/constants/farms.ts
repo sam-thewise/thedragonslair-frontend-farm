@@ -9,12 +9,12 @@ const farms: FarmConfig[] = [
     lpSymbol: 'DREGG',
     lpAddresses: {
       97: '',
-      43113: '0xb246CadDfe9471c3560fd9CE3Afd3584F55fe9a6', // DREGG-USDT LP
+      43113: '0x7c1674166715d6ec204161fa0f9f748d735aed8f', // DREGG-USDT LP
     },
     tokenSymbol: 'DREGG',
     tokenAddresses: {
       97: '',
-      43113: '0x250F45b88Fc8B2fDC207Fc4fa7921811e3a5a6c6',
+      43113: '0x89a89f0ac95990306e1aAC2BCBe6e717dF961e8c',
     },
     quoteTokenSymbol: QuoteToken.USDTe,
     quoteTokenAdresses: contracts.usdte,
@@ -25,12 +25,12 @@ const farms: FarmConfig[] = [
     lpSymbol: 'DREGG-USDT.e LP',
     lpAddresses: {
       97: '',
-      43113: '0xb246CadDfe9471c3560fd9CE3Afd3584F55fe9a6',
+      43113: '0x7c1674166715D6ec204161fa0f9f748D735aeD8f',
     },
     tokenSymbol: 'DREGG',
     tokenAddresses: {
       97: '',
-      43113: '0x250F45b88Fc8B2fDC207Fc4fa7921811e3a5a6c6',
+      43113: '0x89a89f0ac95990306e1aAC2BCBe6e717dF961e8c',
     },
     quoteTokenSymbol: QuoteToken.USDTe,
     quoteTokenAdresses: contracts.usdte,

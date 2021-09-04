@@ -1,10 +1,10 @@
 export default {
   dragonegg: {
-    43113: '0x250F45b88Fc8B2fDC207Fc4fa7921811e3a5a6c6',
+    43113: '0x89a89f0ac95990306e1aAC2BCBe6e717dF961e8c',
     97: '',
   },
   masterChef: {
-    43113: '0x6dC8722cA0D8C7717CFD1267bA44687448c8c912',
+    43113: '0xa8D39031DA608B6A2Cb816587ca6645845e132Da',
     97: '',
   },
   wavax: {

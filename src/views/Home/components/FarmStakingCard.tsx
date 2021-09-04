@@ -1,23 +1,46 @@
 import React, { useState, useCallback } from 'react'
 import styled from 'styled-components'
-import { Heading, Card, CardBody, Button } from '@pancakeswap-libs/uikit'
+import { Button, Text } from '@pancakeswap-libs/uikit'
 import { useWallet } from '@binance-chain/bsc-use-wallet'
 import BigNumber from 'bignumber.js'
-import useI18n from 'hooks/useI18n'
 import { useAllHarvest } from 'hooks/useHarvest'
 import useFarmsWithBalance from 'hooks/useFarmsWithBalance'
 import UnlockButton from 'components/UnlockButton'
 import CakeHarvestBalance from './CakeHarvestBalance'
-import CakeWalletBalance from './CakeWalletBalance'
 import { usePriceDreggUsdt } from '../../../state/hooks'
 import useTokenBalance from '../../../hooks/useTokenBalance'
 import { getCakeAddress } from '../../../utils/addressHelpers'
 import useAllEarnings from '../../../hooks/useAllEarnings'
 import { getBalanceNumber } from '../../../utils/formatBalance'
+import CardValue from './CardValue'
 
-const StyledFarmStakingCard = styled(Card)`
-  display: inline-block;
+interface FarmStakingCardProps {
+  totalValueLockedUser: BigNumber,
+  farmsCountStakedUser: number
+}
+
+const StyledFarmStakingCard = styled.div`
+  display: flex;
   width: 100%;
+  margin-bottom: 16px;
+
+  .inner-container{
+    display: flex;
+  }
+
+  .inner-container .item.shrink{
+    flex-shrink: 2;
+    flex-grow: revert;
+  }
+
+  .item{
+    flex-grow: 1;
+    text-align: center;
+  }
+
+  .item + .item{
+    margin-left: 2%;
+  } 
 `
 
 const Block = styled.div`
@@ -37,10 +60,9 @@ const Actions = styled.div`
   margin-top: 24px;
 `
 
-const FarmedStakingCard = () => {
+const FarmedStakingCard : React.FC<FarmStakingCardProps> = ({ totalValueLockedUser, farmsCountStakedUser }) => {
   const [pendingTx, setPendingTx] = useState(false)
   const { account } = useWallet()
-  const TranslateString = useI18n()
   const farmsWithBalance = useFarmsWithBalance()
   const cakeBalance = getBalanceNumber(useTokenBalance(getCakeAddress()))
   const eggPrice = usePriceDreggUsdt().toNumber()
@@ -65,38 +87,47 @@ const FarmedStakingCard = () => {
 
   return (
     <StyledFarmStakingCard>
-      <CardBody>
-        <Heading size="xl" mb="24px">
-          {TranslateString(542, 'Farms & Staking')}
-        </Heading>
-        <CardImage src="/images/egg/2.png" alt="cake logo" width={64} height={64} />
-        <Block>
-          <Label>{TranslateString(544, 'EGG to Harvest')}</Label>
-          <CakeHarvestBalance earningsSum={earningsSum}/>
-          <Label>~${(eggPrice * earningsSum).toFixed(2)}</Label>
-        </Block>
-        <Block>
-          <Label>{TranslateString(546, 'EGG in Wallet')}</Label>
-          <CakeWalletBalance cakeBalance={cakeBalance} />
-          <Label>~${(eggPrice * cakeBalance).toFixed(2)}</Label>
-        </Block>
-        <Actions>
-          {account ? (
-            <Button
-              id="harvest-all"
-              disabled={balancesWithValue.length <= 0 || pendingTx}
-              onClick={harvestAllFarms}
-              fullWidth
-            >
-              {pendingTx
-                ? TranslateString(548, 'Collecting EGG')
-                : TranslateString(999, `Harvest all (${balancesWithValue.length})`)}
-            </Button>
-          ) : (
-            <UnlockButton fullWidth />
+      <div className="item shrink">
+          <Label><strong>Your Total Staked</strong></Label>
+
+          <CardValue value={totalValueLockedUser.toNumber()} decimals={2} prefix="$" />
+          { farmsCountStakedUser > 0 ? (
+            <Label><strong>Across {farmsCountStakedUser} Pool(s)</strong></Label>
+          )
+          : (
+            <Label>Not staked in any pool(s)</Label>
           )}
-        </Actions>
-      </CardBody>
+      </div>
+      <div className="item">
+        <div className="inner-container">
+          <div className="item shrink">
+            <CardImage src="/images/egg/DREGG.png" alt="Dragon Egg" width={64} height={64} />
+          </div>
+          <div className="item shrink">
+            
+            <Label><strong>DREGG to Harvest</strong></Label>
+            <CakeHarvestBalance decimals={2} earningsSum={earningsSum}/>
+            <Label><strong>~${(eggPrice * earningsSum).toFixed(2)}</strong></Label>
+          </div>
+        </div>
+      </div>
+      <div className="item">
+        {account ? (
+          <Button
+            id="harvest-all"
+            disabled={balancesWithValue.length <= 0 || pendingTx}
+            onClick={harvestAllFarms}
+            fullWidth
+          >
+            {pendingTx
+              ? 'Collecting DREGG'
+              : `Harvest all (${balancesWithValue.length})`}
+          </Button>
+        ) : (
+          <UnlockButton fullWidth />
+        )}
+      </div>
+      
     </StyledFarmStakingCard>
   )
 }

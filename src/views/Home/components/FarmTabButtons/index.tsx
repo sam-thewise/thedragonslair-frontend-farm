@@ -12,16 +12,8 @@ const FarmTabButtons = ({ stakedOnly, setStakedOnly }) => {
     <Wrapper>
       <ToggleWrapper>
         <Toggle checked={stakedOnly} onChange={() => setStakedOnly(!stakedOnly)} />
-        <Text> {TranslateString(699, 'Staked only')}</Text>
+        <Text> Show only pools you&apos;re staked in</Text>
       </ToggleWrapper>
-      <ButtonMenu activeIndex={isExact ? 0 : 1} size="sm" variant="subtle">
-        <ButtonMenuItem as={Link} to={`${url}`}>
-          {TranslateString(698, 'Active')}
-        </ButtonMenuItem>
-        <ButtonMenuItem as={Link} to={`${url}/history`}>
-          {TranslateString(700, 'Inactive')}
-        </ButtonMenuItem>
-      </ButtonMenu>
     </Wrapper>
   )
 }

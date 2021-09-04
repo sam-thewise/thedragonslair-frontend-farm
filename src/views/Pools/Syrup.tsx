@@ -80,7 +80,7 @@ const Farm: React.FC = () => {
         </div>
         <img src="/images/syrup.png" alt="SYRUP POOL icon" width={410} height={191} />
       </Hero>
-      <PoolTabButtons />
+      {/* <PoolTabButtons /> */}
       <Divider />
       <FlexLayout>
         <Route exact path={`${path}`}>

@@ -4,12 +4,12 @@ import React, { useEffect, useCallback, useState } from 'react'
 import { Route, useRouteMatch } from 'react-router-dom'
 import { useDispatch } from 'react-redux'
 import { BLOCKS_PER_YEAR, CAKE_PER_BLOCK, CAKE_POOL_PID } from 'config'
+
 import BigNumber from 'bignumber.js'
 import { useWallet } from '@binance-chain/bsc-use-wallet'
 import { provider } from 'web3-core'
-import { Image, Heading, Text, BaseLayout } from '@pancakeswap-libs/uikit'
+import { Heading, BaseLayout } from '@pancakeswap-libs/uikit'
 import Page from 'components/layout/Page'
-import FlexLayout from 'components/layout/Flex'
 import { useFarms, usePriceWavaxUsdt, usePriceDreggUsdt } from 'state/hooks'
 import useRefresh from 'hooks/useRefresh'
 import { fetchFarmUserDataAsync } from 'state/actions'
@@ -18,29 +18,23 @@ import { QuoteToken } from 'config/constants/types'
 import FarmStakingCard from './components/FarmStakingCard'
 import CakeStats from './components/CakeStats'
 import TotalValueLockedCard from './components/TotalValueLockedCard'
-import TwitterCard from './components/TwitterCard'
+
 import FarmCard, { FarmWithStakedValue } from './components/FarmCard/FarmCard'
 import FarmTabButtons from './components/FarmTabButtons'
-import Divider from './components/Divider'
+
+const ContentWrapper = styled.div`
+  background: rgba(97,105,182,0.5);
+  padding: 16px;
+  padding-top: 32px;
+  margin-bottom: 16px;
+`
 
 const Hero = styled.div`
-  align-items: center;
-  background-image: url('/images/egg/3.png');
-  background-repeat: no-repeat;
-  background-position: top center;
-  display: flex;
-  justify-content: center;
-  flex-direction: column;
-  margin: auto;
   margin-bottom: 32px;
-  padding-top: 116px;
-  text-align: center;
+  text-align: left;
 
-  ${({ theme }) => theme.mediaQueries.lg} {
-    background-image: url('/images/egg/3.png'), url('/images/egg/3b.png');
-    background-position: left center, right center;
-    height: 165px;
-    padding-top: 0;
+  h1{
+    color: #fff;
   }
 `
 
@@ -89,9 +83,42 @@ const Home: React.FC = ( ) => {
   const activeFarms = farmsLP.filter((farm) => farm.multiplier !== '0X')
   const inactiveFarms = farmsLP.filter((farm) => farm.multiplier === '0X')
 
+  let totalValueUser = new BigNumber(0);
+  let totalFarmsUser = 0;
+
   const stakedOnlyFarms = activeFarms.filter(
     (farm) => farm.userData && new BigNumber(farm.userData.stakedBalance).isGreaterThan(0),
   )
+
+  stakedOnlyFarms.forEach(farm => {
+    if( farm.userData )
+    {
+      totalFarmsUser++
+
+      if( farm.isTokenOnly )
+      {
+        const stakedBalanceDecimalsFixed = new BigNumber( farm.userData.stakedBalance ).div(new BigNumber(10).pow(farm.tokenDecimals))
+        const userValue = stakedBalanceDecimalsFixed.times( farm.tokenPriceVsQuote )
+
+        totalValueUser = totalValueUser.plus( userValue )
+      } else {
+        // users staked in full number format
+        const userStakesFullInLPToken = new BigNumber(farm.userData.stakedBalance)
+        
+         // Ratio in % a LP tokens that the user has staking, vs the total number in circulation
+        const userTokenRatio = userStakesFullInLPToken.div(new BigNumber(farm.lpTotalSupply))
+
+        // we work out how much of the users tokens are in the staking pool in the quote token
+        const userLPTokens = new BigNumber(farm.quoteTokenBalanceLP)
+          .div(new BigNumber(10).pow(farm.quoteTokenDecimals))
+          .times(new BigNumber(2))
+          .times(userTokenRatio)
+
+        totalValueUser = totalValueUser.plus( userLPTokens )
+      }
+      
+    }
+  });
 
   // /!\ This function will be removed soon
   // This function compute the APY for each farm and will be replaced when we have a reliable API
@@ -139,31 +166,33 @@ const Home: React.FC = ( ) => {
     <Page>
       <Hero>
         <Heading as="h1" size="xl" mb="24px" color="secondary">
-          The Dragon&apos;s Lair
+          The Dragon&apos;s Lair &ndash; Avalanche Yield Farm
         </Heading>
       </Hero>
-      
-      <div>
-        <FarmStakingCard />
-        <div>
-          <FarmTabButtons stakedOnly={stakedOnly} setStakedOnly={setStakedOnly}/> 
 
-          <Route exact path={`${path}`}>
-            {stakedOnly ? farmsList(stakedOnlyFarms, false) : farmsList(activeFarms, false)}
-          </Route>
-          <Route exact path={`${path}/history`}>
-            {farmsList(inactiveFarms, true)}
-          </Route>
+      <ContentWrapper>
+        <div>
+          <FarmStakingCard totalValueLockedUser={totalValueUser} farmsCountStakedUser={totalFarmsUser} />
         </div>
-      </div>
-      <div>
-        <Cards>
-          <FarmStakingCard />
-        
-          <CakeStats />
-          <TotalValueLockedCard />
-        </Cards>
-      </div>
+      </ContentWrapper>
+      
+      <ContentWrapper>
+        <div>
+          <div>
+            <FarmTabButtons stakedOnly={stakedOnly} setStakedOnly={setStakedOnly}/> 
+
+            <Route exact path={`${path}`}>
+              {stakedOnly ? farmsList(stakedOnlyFarms, false) : farmsList(activeFarms, false)}
+            </Route>
+          </div>
+        </div>
+        <div>
+          <Cards>
+            <CakeStats />
+            <TotalValueLockedCard />
+          </Cards>
+        </div>
+      </ContentWrapper>
     </Page>
   )
 }

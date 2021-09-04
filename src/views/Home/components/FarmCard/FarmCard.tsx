@@ -12,59 +12,27 @@ import DetailsSection from './DetailsSection'
 import CardHeading from './CardHeading'
 import CardActionsContainer from './CardActionsContainer'
 import ApyButton from './ApyButton'
+import CakeHarvestBalance from '../CakeHarvestBalance'
 
 export interface FarmWithStakedValue extends Farm {
   apy?: BigNumber
 }
 
-const RainbowLight = keyframes`
-  0% {
-    background-position: 0% 50%;
-  }
-  50% {
-    background-position: 100% 50%;
-  }
-  100% {
-    background-position: 0% 50%;
-  }
-`
-
-const StyledCardAccent = styled.div`
-  background: linear-gradient(45deg,
-  rgba(255, 0, 0, 1) 0%,
-  rgba(255, 154, 0, 1) 10%,
-  rgba(208, 222, 33, 1) 20%,
-  rgba(79, 220, 74, 1) 30%,
-  rgba(63, 218, 216, 1) 40%,
-  rgba(47, 201, 226, 1) 50%,
-  rgba(28, 127, 238, 1) 60%,
-  rgba(95, 21, 242, 1) 70%,
-  rgba(186, 12, 248, 1) 80%,
-  rgba(251, 7, 217, 1) 90%,
-  rgba(255, 0, 0, 1) 100%);
-  background-size: 300% 300%;
-  animation: ${RainbowLight} 2s linear infinite;
-  border-radius: 16px;
-  filter: blur(6px);
-  position: absolute;
-  top: -2px;
-  right: -2px;
-  bottom: -2px;
-  left: -2px;
-  z-index: -1;
-`
-
 const FCard = styled.div`
   align-self: baseline;
   background: ${(props) => props.theme.card.background};
-  border-radius: 32px;
-  box-shadow: 0px 2px 12px -8px rgba(25, 19, 38, 0.1), 0px 1px 1px rgba(25, 19, 38, 0.05);
+  border-radius: 4px;
   display: flex;
-  flex-direction: column;
-  justify-content: space-around;
+  flex-wrap: wrap;
+  justify-content: space-between;
   padding: 24px;
   position: relative;
   text-align: center;
+  margin-bottom: 16px;
+
+  .details{
+    width: 100%;
+  }
 `
 
 const Divider = styled.div`
@@ -77,6 +45,11 @@ const Divider = styled.div`
 const ExpandingWrapper = styled.div<{ expanded: boolean }>`
   height: ${(props) => (props.expanded ? '100%' : '0px')};
   overflow: hidden;
+`
+
+const Label = styled.div`
+  color: ${({ theme }) => theme.colors.textSubtle};
+  font-size: 14px;
 `
 
 interface FarmCardProps {
@@ -102,7 +75,7 @@ const FarmCard: React.FC<FarmCardProps> = ({ farm, removed, cakePrice, bnbPrice,
   const totalValue: BigNumber = useMemo(() => {
 
     if (!farm.lpTotalInQuoteToken) {
-      console.log('null value')
+      // console.log('null value')
       return null
     }
     if (farm.quoteTokenSymbol === QuoteToken.WAVAX) {
@@ -120,7 +93,8 @@ const FarmCard: React.FC<FarmCardProps> = ({ farm, removed, cakePrice, bnbPrice,
 
   const lpLabel = farm.lpSymbol
   const earnLabel = 'DREGG'
-  const farmAPY = farm.apy && farm.apy.times(new BigNumber(100)).toNumber().toLocaleString(undefined, {
+  const farmAPYNumber =  farm.apy && farm.apy.times(new BigNumber(100)).toNumber()
+  const farmAPY = farmAPYNumber.toLocaleString(undefined, {
     minimumFractionDigits: 2,
     maximumFractionDigits: 2,
   })
@@ -129,68 +103,78 @@ const FarmCard: React.FC<FarmCardProps> = ({ farm, removed, cakePrice, bnbPrice,
 
   return (
     <FCard>
-      {farm.tokenSymbol === 'DREGG' && <StyledCardAccent />}
-      <CardHeading
-        lpLabel={lpLabel}
-        multiplier={farm.multiplier}
-        risk={risk}
-        depositFee={farm.depositFeeBP}
-        farmImage={farmImage}
-        tokenSymbol={farm.tokenSymbol}
-      />
+      <div className="heading item">
+        <CardHeading
+          lpLabel={lpLabel}
+          multiplier={farm.multiplier}
+          risk={risk}
+          depositFee={farm.depositFeeBP}
+          farmImage={farmImage}
+          tokenSymbol={farm.tokenSymbol}
+        />
+      </div>
       {!removed && (
-        <Flex justifyContent='space-between' alignItems='center'>
-          <Text>{TranslateString(352, 'APR')}:</Text>
-          <Text bold style={{ display: 'flex', alignItems: 'center' }}>
+        <div className="apr item">
+          
+            
             {farm.apy ? (
               <>
-                <ApyButton
-                  lpLabel={lpLabel}
-                  quoteTokenAdresses={quoteTokenAdresses}
-                  quoteTokenSymbol={quoteTokenSymbol}
-                  tokenAddresses={tokenAddresses}
-                  cakePrice={cakePrice}
-                  apy={farm.apy}
-                />
-                {farmAPY}%
+                <Label>
+                  APR 
+                </Label>
+
+                <Text color="text" bold fontSize="28px">
+                  {farmAPY}%
+                </Text>
+
+                <Label className="textSubtle">
+                  <ApyButton
+                      lpLabel={lpLabel}
+                      quoteTokenAdresses={quoteTokenAdresses}
+                      quoteTokenSymbol={quoteTokenSymbol}
+                      tokenAddresses={tokenAddresses}
+                      cakePrice={cakePrice}
+                      apy={farm.apy}
+                    />
+                </Label>
               </>
             ) : (
               <Skeleton height={24} width={80} />
             )}
-          </Text>
-        </Flex>
+        </div>
       )}
-      <Flex justifyContent='space-between'>
-        <Text>{TranslateString(318, 'Earn')}:</Text>
-        <Text bold>{earnLabel}</Text>
-      </Flex>
-      <Flex justifyContent='space-between'>
-        <Text style={{ fontSize: '24px' }}>{TranslateString(10001, 'Deposit Fee')}:</Text>
+      
+      { farm.depositFeeBP > 0 ? (
+      <div className="item">
+        <Label>Deposit Fee</Label>
         <Text bold style={{ fontSize: '24px' }}>{(farm.depositFeeBP / 100)}%</Text>
-      </Flex>
+      </div>
+      ) : '' }
       <CardActionsContainer farm={farm} ethereum={ethereum} account={account} />
-      <Divider />
-      <ExpandableSectionButton
-        onClick={() => setShowExpandableSection(!showExpandableSection)}
-        expanded={showExpandableSection}
-      />
-      <ExpandingWrapper expanded={showExpandableSection}>
-        <DetailsSection
-          removed={removed}
-          isTokenOnly={farm.isTokenOnly}
-          bscScanAddress={
-            farm.isTokenOnly ?
-              `https://cchain.explorer.avax.network/tokens/${farm.tokenAddresses[process.env.REACT_APP_CHAIN_ID]}`
-              :
-              `https://cchain.explorer.avax.network/tokens/${farm.lpAddresses[process.env.REACT_APP_CHAIN_ID]}`
-          }
-          totalValueFormated={totalValueFormated}
-          lpLabel={lpLabel}
-          quoteTokenAdresses={quoteTokenAdresses}
-          quoteTokenSymbol={quoteTokenSymbol}
-          tokenAddresses={tokenAddresses}
+      <div className="details">
+        <Divider />
+        <ExpandableSectionButton
+          onClick={() => setShowExpandableSection(!showExpandableSection)}
+          expanded={showExpandableSection}
         />
-      </ExpandingWrapper>
+        <ExpandingWrapper expanded={showExpandableSection}>
+          <DetailsSection
+            removed={removed}
+            isTokenOnly={farm.isTokenOnly}
+            bscScanAddress={
+              farm.isTokenOnly ?
+                `https://cchain.explorer.avax.network/tokens/${farm.tokenAddresses[process.env.REACT_APP_CHAIN_ID]}`
+                :
+                `https://cchain.explorer.avax.network/tokens/${farm.lpAddresses[process.env.REACT_APP_CHAIN_ID]}`
+            }
+            totalValueFormated={totalValueFormated}
+            lpLabel={lpLabel}
+            quoteTokenAdresses={quoteTokenAdresses}
+            quoteTokenSymbol={quoteTokenSymbol}
+            tokenAddresses={tokenAddresses}
+          />
+        </ExpandingWrapper>
+      </div>
     </FCard>
   )
 }

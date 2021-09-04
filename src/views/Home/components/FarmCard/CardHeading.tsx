@@ -22,6 +22,36 @@ const MultiplierTag = styled(Tag)`
   margin-left: 4px;
 `
 
+const StyledInfoCard = styled.div`
+  display: flex;
+  width: 100%;
+  margin-bottom: 16px;
+
+  .image img{
+    width: 76px;
+    height: 76px;
+    max-width: inherit !important;
+  }
+
+  .inner-container{
+    display: flex;
+  }
+
+  .inner-container .item.shrink{
+    flex-shrink: 2;
+    flex-grow: revert;
+  }
+
+  .item{
+    flex-grow: 1;
+    text-align: center;
+  }
+
+  .item + .item{
+    margin-left: 2%;
+  } 
+`
+
 const CardHeading: React.FC<ExpandableSectionProps> = ({
   lpLabel,
   multiplier,
@@ -31,18 +61,19 @@ const CardHeading: React.FC<ExpandableSectionProps> = ({
   depositFee,
 }) => {
   return (
-    <Wrapper justifyContent="space-between" alignItems="center" mb="12px">
-      <Image src={`/images/farms/${farmImage}.png`} alt={tokenSymbol} width={64} height={64} />
-      <Flex flexDirection="column" alignItems="flex-end">
+    <StyledInfoCard>
+      <div className="item image">
+        <img src={`/images/farms/${farmImage}.png`} alt={tokenSymbol} />
+      </div>
+      <div className="item shrink">
         <Heading mb="4px">{lpLabel}</Heading>
-        <Flex justifyContent="center">
           {depositFee === 0 ? <NoFeeTag /> : null}
-          {/* {isCommunityFarm ? <CommunityTag /> : <CoreTag />} */}
-          {/* <RiskTag risk={risk} /> */}
-          <MultiplierTag variant="secondary">{multiplier}</MultiplierTag>
-        </Flex>
-      </Flex>
-    </Wrapper>
+          
+      </div>
+      <div className="item">
+        <MultiplierTag variant="secondary">{multiplier}</MultiplierTag>
+      </div>
+    </StyledInfoCard>
   )
 }
 

@@ -9,16 +9,8 @@ const PoolTabButtons = () => {
   const TranslateString = useI18n()
 
   return (
-    <Wrapper>
-      <ButtonMenu activeIndex={!isExact ? 1 : 0} size="sm" variant="subtle">
-        <ButtonMenuItem as={Link} to={`${url}`}>
-          {TranslateString(999, 'Active')}
-        </ButtonMenuItem>
-        <ButtonMenuItem as={Link} to={`${url}/history`}>
-          {TranslateString(999, 'Inactive')}
-        </ButtonMenuItem>
-      </ButtonMenu>
-    </Wrapper>
+    <div></div>
+    
   )
 }
 
