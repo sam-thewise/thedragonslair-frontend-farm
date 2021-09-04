@@ -62,9 +62,9 @@ const Cards = styled(BaseLayout)`
 `
 
 const StickySideBar = styled.div`
-  position: sticky;
-  float: left;
-  top: 40%;
+  position: fixed;
+  top: 150px;
+  left: 0;
 `
 
 const StickyIcons = styled.a`
