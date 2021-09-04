@@ -202,7 +202,7 @@ const Home: React.FC = ( ) => {
         <Hero>
           <Heading as="h1" size="xl" mb="24px" color="secondary">
             {/* The Dragon&apos;s Lair &ndash; Avalanche Yield Farm */}
-            WARNING: SITE NOT CONNECTED TO LIVE DATA! THIS IS A TEST!!
+            WARNING: SITE NOT CONNECTED TO LIVE DATA! THIS IS IN TESTING MODE!
           </Heading>
         </Hero>
 
