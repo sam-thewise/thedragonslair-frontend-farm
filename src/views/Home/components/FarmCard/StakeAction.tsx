@@ -37,6 +37,7 @@ const StyledInfoCard = styled.div`
   }
 
   .item{
+    width: 48%;
     flex-grow: 1;
     text-align: center;
   }
@@ -79,27 +80,27 @@ const StakeAction: React.FC<FarmCardActionsProps> = ({ lpName, stakedBalance, to
       <Button onClick={onPresentDeposit}>{TranslateString(999, 'Stake')}</Button>
     ) : (
       <IconButtonWrapper>
-        <IconButton variant="tertiary" onClick={onPresentWithdraw} mr="6px">
-          <MinusIcon color="primary" />
-        </IconButton>
-        <IconButton variant="tertiary" onClick={onPresentDeposit}>
-          <AddIcon color="primary" />
-        </IconButton>
+        <Button  onClick={onPresentWithdraw} mr="6px">
+          Withdraw
+        </Button>
+        <Button onClick={onPresentDeposit}>
+          Deposit
+        </Button>
       </IconButtonWrapper>
     )
   }
 
   return (
-    <>
-      <div className="item shrink">
+    <StyledInfoCard>
+      <div className="item">
         <Label>{lpName} Staked</Label>
         <CakeHarvestBalance earningsSum={rawStakedBalance} fontSize="28px" decimals={6} />
         <CardValue color='textSubtle' value={quoteTokenBalance.toNumber()} decimals={2} prefix="~$" fontSize="14px" />
       </div>
-      <div className="item shrink">
+      <div className="item">
         {renderStakingButtons()}
       </div>
-    </>
+    </StyledInfoCard>
   )
 }
 
