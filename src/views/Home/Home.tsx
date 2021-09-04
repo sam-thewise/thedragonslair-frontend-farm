@@ -61,6 +61,22 @@ const Cards = styled(BaseLayout)`
   }
 `
 
+const StickySideBar = styled.div`
+  position: sticky;
+  float: left;
+  top: 40%;
+`
+
+const StickyIcons = styled.a`
+  display: block;
+  text-align: center;
+  padding: 1px;
+  color: white;
+  font-size: 20px;
+  max-width: 10%;
+  height: auto;
+`
+
 const Home: React.FC = ( ) => {
   const { path } = useRouteMatch()
   const TranslateString = useI18n()
@@ -163,38 +179,58 @@ const Home: React.FC = ( ) => {
   )
 
   return (
-    <Page>
-      <Hero>
-        <Heading as="h1" size="xl" mb="24px" color="secondary">
-          {/* The Dragon&apos;s Lair &ndash; Avalanche Yield Farm */}
-          WARNING: SITE NOT CONNECTED TO LIVE DATA! THIS IS A TEST!!
-        </Heading>
-      </Hero>
+    <div>
+      <StickySideBar>
+        <StickyIcons href="https://t.me/thedragonslairfarm" target="_blank">
+            <img alt="telegram" src="https://image.flaticon.com/icons/png/512/124/124019.png"/>
+        </StickyIcons>
+        <StickyIcons href="https://twitter.com/DRGNCRYPTOGAMIN" target="_blank">
+            <img alt="twitter" src="https://seeklogo.com/images/T/twitter-icon-square-logo-108D17D373-seeklogo.com.png"/>
+        </StickyIcons>
+        <StickyIcons href="https://docs.thedragonslair.farm/" target="_blank">
+            <img alt="docs" src="https://cdn2.iconfinder.com/data/icons/metro-ui-dock/512/Doc_-_Google_Docs.png"/>
+        </StickyIcons>
+        <StickyIcons href="" target="_blank">
+            <img alt="charts" src="https://d1nhio0ox7pgb.cloudfront.net/_img/o_collection_png/green_dark_grey/512x512/plain/chart_candlestick.png"/>
+        </StickyIcons>
+        <StickyIcons href="" target="_blank">
+            <img alt="exchange" src="https://assets.coingecko.com/markets/images/627/large/pangolin.jpg?1613741041"/>
+        </StickyIcons>
+      </StickySideBar>
+    
+      <Page>
+        <Hero>
+          <Heading as="h1" size="xl" mb="24px" color="secondary">
+            {/* The Dragon&apos;s Lair &ndash; Avalanche Yield Farm */}
+            WARNING: SITE NOT CONNECTED TO LIVE DATA! THIS IS A TEST!!
+          </Heading>
+        </Hero>
 
-      <ContentWrapper>
-        <div>
-          <FarmStakingCard totalValueLockedUser={totalValueUser} farmsCountStakedUser={totalFarmsUser} />
-        </div>
-      </ContentWrapper>
-      
-      <ContentWrapper>
-        <div>
+        <ContentWrapper>
           <div>
-            <FarmTabButtons stakedOnly={stakedOnly} setStakedOnly={setStakedOnly}/> 
-
-            <Route exact path={`${path}`}>
-              {stakedOnly ? farmsList(stakedOnlyFarms, false) : farmsList(activeFarms, false)}
-            </Route>
+            <FarmStakingCard totalValueLockedUser={totalValueUser} farmsCountStakedUser={totalFarmsUser} />
           </div>
-        </div>
-        <div>
-          <Cards>
-            <CakeStats />
-            <TotalValueLockedCard />
-          </Cards>
-        </div>
-      </ContentWrapper>
-    </Page>
+        </ContentWrapper>
+        
+        <ContentWrapper>
+          <div>
+            <div>
+              <FarmTabButtons stakedOnly={stakedOnly} setStakedOnly={setStakedOnly}/> 
+
+              <Route exact path={`${path}`}>
+                {stakedOnly ? farmsList(stakedOnlyFarms, false) : farmsList(activeFarms, false)}
+              </Route>
+            </div>
+          </div>
+          <div>
+            <Cards>
+              <CakeStats />
+              <TotalValueLockedCard />
+            </Cards>
+          </div>
+        </ContentWrapper>
+      </Page>
+    </div>
   )
 }
 
