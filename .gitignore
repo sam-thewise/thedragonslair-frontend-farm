@@ -16,7 +16,6 @@
 .idea/
 # production
 /build
-package-lock.json
 
 # misc
 .DS_Store
@@ -32,4 +31,5 @@ yarn-error.log*
 
 # gitignore
 sftp-config.json
+package-lock.json
 /.github/
