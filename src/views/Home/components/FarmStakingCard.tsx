@@ -46,6 +46,10 @@ const StyledFarmStakingCard = styled.div`
   .item + .item{
     margin-left: 2%;
   } 
+
+  .margin-top-adjust {
+    margin-top: 8px;
+  }
 `
 
 const Block = styled.div`
@@ -92,7 +96,7 @@ const FarmedStakingCard : React.FC<FarmStakingCardProps> = ({ totalValueLockedUs
 
   return (
     <StyledFarmStakingCard>
-      <div className="item shrink">
+      <div className="item shrink margin-top-adjust">
           <Label><strong>Your Total Staked</strong></Label>
 
           <CardValue value={totalValueLockedUser.toNumber()} decimals={2} prefix="$" />
