@@ -20,7 +20,7 @@ export interface FarmWithStakedValue extends Farm {
 
 const FCard = styled.div`
   align-self: baseline;
-  background: ${(props) => props.theme.card.background};
+  background: rgba(0,0,0,0.75);
   border-radius: 4px;
   display: flex;
   flex-wrap: wrap;
