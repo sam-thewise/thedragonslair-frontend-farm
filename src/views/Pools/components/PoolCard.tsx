@@ -104,7 +104,7 @@ const PoolCard: React.FC<HarvestProps> = ({ pool }) => {
         setRequestedApproval(false)
       }
     } catch (e) {
-      console.error(e)
+      // console.error(e)
     }
   }, [onApprove, setRequestedApproval])
 
