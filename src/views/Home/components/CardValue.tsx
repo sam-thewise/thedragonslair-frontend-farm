@@ -11,7 +11,7 @@ interface CardValueProps {
   suffix?: string
 }
 
-const CardValue: React.FC<CardValueProps> = ({ value, color = 'text', decimals, fontSize = '30px', prefix, suffix }) => {
+const CardValue: React.FC<CardValueProps> = ({ value, color = 'text', decimals, fontSize = '25px', prefix, suffix }) => {
   const { countUp, update } = useCountUp({
     start: 0,
     end: value,
