@@ -37,6 +37,10 @@ const StyledInfoCard = styled.div`
     flex-grow: revert;
   }
 
+  .inner-container .item.full{
+    width: 100%;
+  }
+
   .item{
     flex-grow: 1;
     text-align: center;
@@ -144,7 +148,7 @@ const CardActions: React.FC<FarmCardActionsProps> = ({ farm, ethereum, account }
         <div className="item shrink">
           <HarvestAction earnings={earnings} pid={pid} />
         </div>
-      {!account ? <div className="item shrink"><UnlockButton mt="8px" fullWidth /></div> : renderApprovalOrStakeButton()}
+      {!account ? <div className="item full"><UnlockButton mt="8px" fullWidth /></div> : renderApprovalOrStakeButton()}
     </>
   )
 }

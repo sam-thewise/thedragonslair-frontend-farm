@@ -33,3 +33,5 @@ yarn-error.log*
 sftp-config.json
 package-lock.json
 /.github/
+yarn.lock
+*.lock

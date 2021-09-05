@@ -30,8 +30,12 @@ const FCard = styled.div`
   text-align: center;
   margin-bottom: 16px;
 
-  .details{
+  .details, .full{
     width: 100%;
+  }
+
+  .full{
+    padding-top: 8px;
   }
 
   .item.shrink button{
