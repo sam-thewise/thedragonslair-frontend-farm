@@ -26,7 +26,10 @@
     "@typescript-eslint/no-explicit-any": 0,
     "radix": 0,
     "import/no-extraneous-dependencies": 0,
-    "react/require-default-props": "off" // Since we do not use prop-types
+    "react/require-default-props": "off", // Since we do not use prop-types
+    "@typescript-eslint/no-unused-vars": "off",
+    "@typescript-eslint/no-unused-vars-experimental": "off",
+    "no-unused-vars": "off"
     // End temporary rules
   }
 }
