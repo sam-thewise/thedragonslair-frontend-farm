@@ -30,6 +30,7 @@ const ContentWrapper = styled.div`
   margin-bottom: 16px;
   border-radius: 3px;
   border: 1px solid #efcd52;
+  backdrop-filter: blur(3px);
 `
 
 const DarkContentWrapper = styled.div`
@@ -39,6 +40,7 @@ const DarkContentWrapper = styled.div`
   margin-bottom: 16px;
   border-radius: 3px;
   border: 1px solid #efcd52;
+  backdrop-filter: blur(3px);
 `
 
 const Hero = styled.div`
