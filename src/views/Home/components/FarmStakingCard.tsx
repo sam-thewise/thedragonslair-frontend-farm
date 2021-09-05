@@ -22,33 +22,32 @@ interface FarmStakingCardProps {
 const StyledFarmStakingCard = styled.div`
   display: flex;
   width: 100%;
-  margin-bottom: 16px;
+  margin-bottom: 22px;
+  padding: 12px;
 
-  .inner-container{
-    display: flex;
-  }
 
   .inner-container .item.shrink{
     flex-shrink: 2;
     flex-grow: revert;
   }
 
+  .item.shrink {
+    margin-top: 20px;
+  }
+
   .item{
     flex-grow: 1;
-    text-align: center;
+    display: inline-block;
   }
 
   .item.harvest-all{
-    padding-top: 12px;
-    padding-right: 30px;
+    margin-top: 3%;
+    
   }
 
-  .item + .item{
-    margin-left: 2%;
-  } 
-
   .margin-top-adjust {
-    margin-top: 8px;
+    margin-top: 2%;
+   
   }
 `
 
