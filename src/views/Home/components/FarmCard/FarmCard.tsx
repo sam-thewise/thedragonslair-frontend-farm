@@ -83,7 +83,6 @@ const FarmCard: React.FC<FarmCardProps> = ({ farm, removed, cakePrice, bnbPrice,
   const totalValue: BigNumber = useMemo(() => {
 
     if (!farm.lpTotalInQuoteToken) {
-      // console.log('null value')
       return null
     }
     if (farm.quoteTokenSymbol === QuoteToken.WAVAX) {

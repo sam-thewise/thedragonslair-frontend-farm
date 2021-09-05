@@ -22,8 +22,6 @@ const CardValue: React.FC<CardValueProps> = ({ value, color = 'text', decimals, 
       decimals !== undefined ? decimals : value < 0 ? 4 : value > 1e5 ? 0 : 3,
   })
 
-  // console.log(value)
-
   const updateValue = useRef(update)
 
   useEffect(() => {
