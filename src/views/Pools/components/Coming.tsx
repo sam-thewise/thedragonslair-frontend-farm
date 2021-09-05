@@ -8,7 +8,7 @@ import CardTitle from './CardTitle'
 
 const Balance = styled.div`
   color: ${({ theme }) => theme.colors.text};
-  font-size: 25px;
+  font-size: 35px;
   font-weight: 600;
 `
 
