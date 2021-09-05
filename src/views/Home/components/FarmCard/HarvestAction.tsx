@@ -39,7 +39,7 @@ const HarvestAction: React.FC<FarmCardActionsProps> = ({ earnings, pid }) => {
             setPendingTx(false)
           }}
         >
-          {TranslateString(999, 'Harvest')}
+          Harvest
         </Button>
       </BalanceAndCompound>
     </Flex>

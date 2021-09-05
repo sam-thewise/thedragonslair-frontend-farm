@@ -33,6 +33,10 @@ const FCard = styled.div`
   .details{
     width: 100%;
   }
+
+  .item.shrink button{
+    margin-top: 16px !important;
+  }
 `
 
 const Divider = styled.div`
@@ -143,13 +147,6 @@ const FarmCard: React.FC<FarmCardProps> = ({ farm, removed, cakePrice, bnbPrice,
             )}
         </div>
       )}
-      
-      { farm.depositFeeBP > 0 ? (
-      <div className="item">
-        <Label>Deposit Fee</Label>
-        <Text bold style={{ fontSize: '24px' }}>{(farm.depositFeeBP / 100)}%</Text>
-      </div>
-      ) : '' }
       <CardActionsContainer farm={farm} ethereum={ethereum} account={account} />
       <div className="details">
         <Divider />

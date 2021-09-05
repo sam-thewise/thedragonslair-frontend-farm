@@ -1,6 +1,6 @@
 import React from 'react'
 import styled from 'styled-components'
-import { Tag, Flex, Heading, Image } from '@pancakeswap-libs/uikit'
+import { Tag, Flex, Heading, Image, Text } from '@pancakeswap-libs/uikit'
 import { CommunityTag, CoreTag, NoFeeTag, RiskTag } from 'components/Tags'
 
 export interface ExpandableSectionProps {
@@ -66,12 +66,9 @@ const CardHeading: React.FC<ExpandableSectionProps> = ({
         <img src={`/images/farms/${farmImage}.png`} alt={tokenSymbol} />
       </div>
       <div className="item shrink">
-        <Heading mb="4px">{lpLabel}</Heading>
-          {depositFee === 0 ? <NoFeeTag /> : null}
-          
-      </div>
-      <div className="item">
-        <MultiplierTag variant="secondary">{multiplier}</MultiplierTag>
+        <Heading mb="4px">{lpLabel} <MultiplierTag variant="secondary">{multiplier}</MultiplierTag></Heading>
+          {depositFee === 0 ? <NoFeeTag /> : <Text color="textSubtle">Deposit Fee <strong>{(depositFee / 100)}%</strong></Text>}
+        
       </div>
     </StyledInfoCard>
   )

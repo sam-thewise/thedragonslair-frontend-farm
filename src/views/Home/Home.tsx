@@ -3,12 +3,13 @@ import useI18n from 'hooks/useI18n'
 import React, { useEffect, useCallback, useState } from 'react'
 import { Route, useRouteMatch } from 'react-router-dom'
 import { useDispatch } from 'react-redux'
+import useBlock from 'hooks/useBlock'
 import { BLOCKS_PER_YEAR, CAKE_PER_BLOCK, CAKE_POOL_PID } from 'config'
 
 import BigNumber from 'bignumber.js'
 import { useWallet } from '@binance-chain/bsc-use-wallet'
 import { provider } from 'web3-core'
-import { Heading, BaseLayout } from '@pancakeswap-libs/uikit'
+import { Heading, BaseLayout, Text } from '@pancakeswap-libs/uikit'
 import Page from 'components/layout/Page'
 import { useFarms, usePriceWavaxUsdt, usePriceDreggUsdt } from 'state/hooks'
 import useRefresh from 'hooks/useRefresh'
@@ -23,10 +24,21 @@ import FarmCard, { FarmWithStakedValue } from './components/FarmCard/FarmCard'
 import FarmTabButtons from './components/FarmTabButtons'
 
 const ContentWrapper = styled.div`
-  background: rgba(97,105,182,0.5);
+  background: rgba(97,105,182,0.75);
   padding: 16px;
   padding-top: 32px;
   margin-bottom: 16px;
+  border-radius: 3px;
+  border: 1px solid #efcd52;
+`
+
+const DarkContentWrapper = styled.div`
+  background: rgba(0,0,0,0.75);
+  padding: 16px;
+  padding-top: 32px;
+  margin-bottom: 16px;
+  border-radius: 3px;
+  border: 1px solid #efcd52;
 `
 
 const Hero = styled.div`
@@ -73,7 +85,7 @@ const StickyIcons = styled.a`
   padding: 1px;
   color: white;
   font-size: 20px;
-  max-width: 10%;
+  max-width: 38px;
   height: auto;
 `
 
@@ -98,6 +110,9 @@ const Home: React.FC = ( ) => {
 
   const activeFarms = farmsLP.filter((farm) => farm.multiplier !== '0X')
   const inactiveFarms = farmsLP.filter((farm) => farm.multiplier === '0X')
+
+  const currentBlock = useBlock()
+  const liveBlock = 4019302
 
   let totalValueUser = new BigNumber(0);
   let totalFarmsUser = 0;
@@ -208,9 +223,23 @@ const Home: React.FC = ( ) => {
 
         <ContentWrapper>
           <div>
-            <FarmStakingCard totalValueLockedUser={totalValueUser} farmsCountStakedUser={totalFarmsUser} />
+            <Heading as="h2" fontSize="26px" mb="12px" mt="-10px" size="l">
+              The website is currently under construction. 
+            </Heading>
+            <Text color="textSubtle">Do not stake on the website. This is not live and is connected to the test chain.</Text>
+            <Text color="text">Stealth Launch is on the <strong>8th of September.</strong></Text> 
+            <Text color="text">Farming Launches on the <strong>10th of September.</strong></Text>
+            {/* <Text color="textSubtle">
+              <strong>Block Countdown</strong> {currentBlock}/{liveBlock}
+            </Text> */}
           </div>
         </ContentWrapper>
+
+        <DarkContentWrapper>
+          <div>
+            <FarmStakingCard totalValueLockedUser={totalValueUser} farmsCountStakedUser={totalFarmsUser} />
+          </div>
+        </DarkContentWrapper>
         
         <ContentWrapper>
           <div>

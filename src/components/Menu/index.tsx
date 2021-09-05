@@ -27,6 +27,7 @@ const Menu = (props) => {
       cakePriceUsd={cakePriceUsd.toNumber()}
       links={config}
       priceLink="https://thedragonslair.farm/"
+      paladinAuditLink="https://paladinsec.co/projects/the-dragons-lair/"
       {...props}
     />
   )

@@ -38,6 +38,11 @@ const StyledFarmStakingCard = styled.div`
     text-align: center;
   }
 
+  .item.harvest-all{
+    padding-top: 12px;
+    padding-right: 30px;
+  }
+
   .item + .item{
     margin-left: 2%;
   } 
@@ -111,7 +116,7 @@ const FarmedStakingCard : React.FC<FarmStakingCardProps> = ({ totalValueLockedUs
           </div>
         </div>
       </div>
-      <div className="item">
+      <div className="item harvest-all">
         {account ? (
           <Button
             id="harvest-all"
