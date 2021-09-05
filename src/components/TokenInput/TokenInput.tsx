@@ -37,9 +37,9 @@ const TokenInput: React.FC<TokenInputProps> = ({ max, symbol, onChange, onSelect
       />
       {
         depositFeeBP > 0 ?
-          <StyledMaxText>
+          <StyledInputText>
             {TranslateString(10001, 'Deposit Fee')}: {new BigNumber(value || 0).times(depositFeeBP/10000).toString()} {symbol}
-          </StyledMaxText>
+          </StyledInputText>
           :
           null
       }
@@ -58,6 +58,15 @@ const StyledTokenAdornmentWrapper = styled.div`
   align-items: center;
   display: flex;
 `
+const StyledInputText = styled.div`
+  align-items: center;
+  color: #000;
+  display: flex;
+  font-size: 14px;
+  font-weight: 700;
+  height: 44px;
+  justify-content: flex-end;
+`
 
 const StyledMaxText = styled.div`
   align-items: center;
@@ -70,7 +79,7 @@ const StyledMaxText = styled.div`
 `
 
 const StyledTokenSymbol = styled.span`
-  color: ${(props) => props.theme.colors.primary};
+  color: #000;
   font-weight: 700;
 `
 

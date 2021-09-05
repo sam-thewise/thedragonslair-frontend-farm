@@ -50,7 +50,7 @@ const CardActions: React.FC<FarmCardActionsProps> = ({ farm, ethereum, account }
       await onApprove()
       setRequestedApproval(false)
     } catch (e) {
-      console.error(e)
+      // console.error(e)
     }
   }, [onApprove])
 
