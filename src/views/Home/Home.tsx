@@ -9,7 +9,7 @@ import { BLOCKS_PER_YEAR, CAKE_PER_BLOCK, CAKE_POOL_PID } from 'config'
 import BigNumber from 'bignumber.js'
 import { useWallet } from '@binance-chain/bsc-use-wallet'
 import { provider } from 'web3-core'
-import { Heading, BaseLayout, Text } from '@pancakeswap-libs/uikit'
+import { Heading, BaseLayout, Text, Link } from '@pancakeswap-libs/uikit'
 import Page from 'components/layout/Page'
 import { useFarms, usePriceWavaxUsdt, usePriceDreggUsdt } from 'state/hooks'
 import useRefresh from 'hooks/useRefresh'
@@ -229,6 +229,7 @@ const Home: React.FC = ( ) => {
               The website is currently under construction. 
             </Heading>
             <Text color="textSubtle">Do not stake on the website. This is not live and is connected to the test chain.</Text>
+            <Text color="text">Please join our <Link color="textSubtle" href="https://t.me/thedragonslairfarm">Telegram</Link> for further updates.</Text> 
             <Text color="text">Stealth Launch is on the <strong>8th of September.</strong></Text> 
             <Text color="text">Farming Launches on the <strong>10th of September.</strong></Text>
             {/* <Text color="textSubtle">
