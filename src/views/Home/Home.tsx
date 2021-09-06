@@ -224,17 +224,17 @@ const Home: React.FC = ( ) => {
       <Page>
         <Hero>
           <Heading as="h1" size="xl" mb="24px" color="secondary">
-            {/* The Dragon&apos;s Lair &ndash; Avalanche Yield Farm */}
-            WARNING: SITE NOT CONNECTED TO LIVE DATA! THIS IS IN TESTING MODE!
+            The Dragon&apos;s Lair &ndash; Avalanche Yield Farm
+            
           </Heading>
         </Hero>
 
         <ContentWrapper>
           <div>
             <Heading as="h2" fontSize="26px" mb="12px" mt="-10px" size="l">
-              The website is currently under construction. 
+              The website will be live once our Stealth Launch has started. 
             </Heading>
-            <Text color="textSubtle">Do not stake on the website. This is not live and is connected to the test chain.</Text>
+            <Text color="textSubtle">Do not try to stake on the website. Contract is not live until after Stealth Launch.</Text>
             <Text color="text">Please join our <TelegramLink rel="noreferrer" target="_blank" href="https://t.me/thedragonslairfarm">Telegram</TelegramLink> for further updates.</Text> 
             <Text color="text">Stealth Launch is on the <strong>8th of September.</strong></Text> 
             <Text color="text">Farming Launches on the <strong>10th of September.</strong></Text>
