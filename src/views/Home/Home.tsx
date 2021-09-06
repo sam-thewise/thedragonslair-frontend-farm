@@ -81,6 +81,12 @@ const StickySideBar = styled.div`
   left: 0;
 `
 
+const TelegramLink = styled.a`
+  font-weight: bold;
+  text-decoration: underline;
+  color: #efcd5;
+`
+
 const StickyIcons = styled.a`
   display: block;
   text-align: center;
@@ -229,7 +235,7 @@ const Home: React.FC = ( ) => {
               The website is currently under construction. 
             </Heading>
             <Text color="textSubtle">Do not stake on the website. This is not live and is connected to the test chain.</Text>
-            <Text color="text">Please join our <Link color="textSubtle" href="https://t.me/thedragonslairfarm">Telegram</Link> for further updates.</Text> 
+            <Text color="text">Please join our <TelegramLink rel="noreferrer" target="_blank" href="https://t.me/thedragonslairfarm">Telegram</TelegramLink> for further updates.</Text> 
             <Text color="text">Stealth Launch is on the <strong>8th of September.</strong></Text> 
             <Text color="text">Farming Launches on the <strong>10th of September.</strong></Text>
             {/* <Text color="textSubtle">
