@@ -97,6 +97,14 @@ const StickyIcons = styled.a`
   height: auto;
 `
 
+const CountdownBox = styled.div`
+  text-align: center;
+  padding: 16px;
+  border: 1px solid #fff;
+  border-radius: 3px;
+  margin-bottom: 16px;
+`
+
 const Home: React.FC = ( ) => {
   const { path } = useRouteMatch()
   const TranslateString = useI18n()
@@ -119,8 +127,14 @@ const Home: React.FC = ( ) => {
   const activeFarms = farmsLP.filter((farm) => farm.multiplier !== '0X')
   const inactiveFarms = farmsLP.filter((farm) => farm.multiplier === '0X')
 
-  const currentBlock = useBlock()
+  
   const liveBlock = 4019302
+  let currentBlock = liveBlock - useBlock()
+
+  if( currentBlock < 0 )
+  {
+    currentBlock = 0;
+  }
 
   let totalValueUser = new BigNumber(0);
   let totalFarmsUser = 0;
@@ -234,13 +248,17 @@ const Home: React.FC = ( ) => {
             <Heading as="h2" fontSize="26px" mb="12px" mt="-10px" size="l">
               The website will be live once our Stealth Launch has started. 
             </Heading>
+
+            <CountdownBox>
+              <Text color="textSubtle">
+                Block Countdown to Farm Start: <strong>{currentBlock}</strong>
+              </Text>
+            </CountdownBox>
+
             <Text color="textSubtle">Do not try to stake on the website. Contract is not live until after Stealth Launch.</Text>
             <Text color="text">Please join our <TelegramLink rel="noreferrer" target="_blank" href="https://t.me/thedragonslairfarm">Telegram</TelegramLink> for further updates.</Text> 
             <Text color="text">Stealth Launch is on the <strong>8th of September.</strong></Text> 
             <Text color="text">Farming Launches on the <strong>10th of September.</strong></Text>
-            {/* <Text color="textSubtle">
-              <strong>Block Countdown</strong> {currentBlock}/{liveBlock}
-            </Text> */}
           </div>
         </ContentWrapper>
 
