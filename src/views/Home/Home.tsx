@@ -128,7 +128,7 @@ const Home: React.FC = ( ) => {
   const inactiveFarms = farmsLP.filter((farm) => farm.multiplier === '0X')
 
   
-  const liveBlock = 4019302
+  const liveBlock = 4086720
   let currentBlock = liveBlock - useBlock()
 
   if( currentBlock < 0 )
