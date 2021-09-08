@@ -75,26 +75,10 @@ const Cards = styled(BaseLayout)`
   }
 `
 
-const StickySideBar = styled.div`
-  position: fixed;
-  top: 150px;
-  left: 0;
-`
-
 const TelegramLink = styled.a`
   font-weight: bold;
   text-decoration: underline;
   color: #efcd5;
-`
-
-const StickyIcons = styled.a`
-  display: block;
-  text-align: center;
-  padding: 1px;
-  color: white;
-  font-size: 20px;
-  max-width: 38px;
-  height: auto;
 `
 
 const CountdownBox = styled.div`
@@ -104,6 +88,8 @@ const CountdownBox = styled.div`
   border-radius: 3px;
   margin-bottom: 16px;
 `
+
+
 
 const Home: React.FC = ( ) => {
   const { path } = useRouteMatch()
@@ -217,24 +203,6 @@ const Home: React.FC = ( ) => {
 
   return (
     <div>
-      <StickySideBar>
-        <StickyIcons href="https://t.me/thedragonslairfarm" target="_blank">
-            <img alt="telegram" src="https://image.flaticon.com/icons/png/512/124/124019.png"/>
-        </StickyIcons>
-        <StickyIcons href="https://twitter.com/DRGNCRYPTOGAMIN" target="_blank">
-            <img alt="twitter" src="https://seeklogo.com/images/T/twitter-icon-square-logo-108D17D373-seeklogo.com.png"/>
-        </StickyIcons>
-        <StickyIcons href="https://docs.thedragonslair.farm/" target="_blank">
-            <img alt="docs" src="https://cdn2.iconfinder.com/data/icons/metro-ui-dock/512/Doc_-_Google_Docs.png"/>
-        </StickyIcons>
-        <StickyIcons href="https://chartex.pro/?symbol=AVAX_TRADERJOE%3ADREGG%2FUSDTe.0xB52a2b91Bf89BcB9435ad94D23555EaD26954CA9" target="_blank">
-            <img alt="charts" src="https://d1nhio0ox7pgb.cloudfront.net/_img/o_collection_png/green_dark_grey/512x512/plain/chart_candlestick.png"/>
-        </StickyIcons>
-        <StickyIcons href="https://www.traderjoexyz.com/#/trade?outputCurrency=0x88c090496125b751B4E3ce4d3FDB8E47DD079c57" target="_blank">
-            <img alt="exchange" src="https://styles.redditmedia.com/t5_4wqgbi/styles/communityIcon_hwxlimnujqh71.png?width=256&s=940b200ec6f27d13edd81f0ce89eba62e765d3d1"/>
-        </StickyIcons>
-      </StickySideBar>
-    
       <Page>
         <Hero>
           <Heading as="h1" size="xl" mb="24px" color="secondary">
@@ -245,20 +213,13 @@ const Home: React.FC = ( ) => {
 
         <ContentWrapper>
           <div>
-            <Heading as="h2" fontSize="26px" mb="12px" mt="-10px" size="l">
-              The website will be live once our Stealth Launch has started. 
-            </Heading>
-
             <CountdownBox>
               <Text color="textSubtle">
                 Block Countdown to Farm Start: <strong>{currentBlock}</strong>
               </Text>
             </CountdownBox>
 
-            <Text color="textSubtle">Do not try to stake on the website. Contract is not live until after Stealth Launch.</Text>
-            <Text color="text">DREGG is now available on <TelegramLink rel="noreferrer" target="_blank" href="https://www.traderjoexyz.com/#/trade?outputCurrency=0x88c090496125b751B4E3ce4d3FDB8E47DD079c57">Trader Joe, click here to buy DREGG</TelegramLink>.</Text> 
             <Text color="text">Please join our <TelegramLink rel="noreferrer" target="_blank" href="https://t.me/thedragonslairfarm">Telegram</TelegramLink> for further updates.</Text> 
-            <Text color="text">Stealth Launch is on the <strong>8th of September.</strong></Text> 
             <Text color="text">Farming Launches on the <strong>10th of September.</strong></Text>
           </div>
         </ContentWrapper>

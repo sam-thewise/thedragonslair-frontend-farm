@@ -1,15 +1,15 @@
 export default {
   dragonegg: {
-    43113: '0x89a89f0ac95990306e1aAC2BCBe6e717dF961e8c',
-    43114: '',
+    43113: '',
+    43114: '0x88c090496125b751b4e3ce4d3fdb8e47dd079c57',
   },
   masterChef: {
-    43113: '0xa8D39031DA608B6A2Cb816587ca6645845e132Da',
-    43114: '',
+    43113: '',
+    43114: '0xC0F19836931F5Ab43f279D4DD5Ab3089846Db264',
   },
   wavax: {
-    43113: '0xd00ae08403b9bbb9124bb305c09058e32c39a48c',
-    43114: '',
+    43113: '',
+    43114: '0xb31f66aa3c1e785363f0875a1b74e27b85fd66c7',
   },
   lottery: {
     43113: '',
@@ -20,11 +20,11 @@ export default {
     43114: '',
   },
   mulltiCall: {
-    43113: '0xDE8c6c8266171F54711c40E512Ec2B6D1FEA6Aba',
-    43114: '',
+    43113: '',
+    43114: '0x8be4CB8cc385C9aDE8b307753cC68aBcFcf4cDCE',
   },
   usdte: {
-    43113: '0xFe143522938e253e5Feef14DB0732e9d96221D72',
-    43114: '',
+    43113: '',
+    43114: '0xc7198437980c041c805a1edcba50c1ce5db95118',
   },
 }
