@@ -230,8 +230,8 @@ const Home: React.FC = ( ) => {
         <StickyIcons href="https://chartex.pro/?symbol=AVAX_TRADERJOE%3ADREGG%2FUSDTe.0xB52a2b91Bf89BcB9435ad94D23555EaD26954CA9" target="_blank">
             <img alt="charts" src="https://d1nhio0ox7pgb.cloudfront.net/_img/o_collection_png/green_dark_grey/512x512/plain/chart_candlestick.png"/>
         </StickyIcons>
-        <StickyIcons href="" target="_blank">
-            <img alt="exchange" src="https://assets.coingecko.com/markets/images/627/large/pangolin.jpg?1613741041"/>
+        <StickyIcons href="https://www.traderjoexyz.com/#/trade?outputCurrency=0x88c090496125b751B4E3ce4d3FDB8E47DD079c57" target="_blank">
+            <img alt="exchange" src="https://styles.redditmedia.com/t5_4wqgbi/styles/communityIcon_hwxlimnujqh71.png?width=256&s=940b200ec6f27d13edd81f0ce89eba62e765d3d1"/>
         </StickyIcons>
       </StickySideBar>
     
