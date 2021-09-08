@@ -245,20 +245,13 @@ const Home: React.FC = ( ) => {
 
         <ContentWrapper>
           <div>
-            <Heading as="h2" fontSize="26px" mb="12px" mt="-10px" size="l">
-              The website will be live once our Stealth Launch has started. 
-            </Heading>
-
             <CountdownBox>
               <Text color="textSubtle">
                 Block Countdown to Farm Start: <strong>{currentBlock}</strong>
               </Text>
             </CountdownBox>
 
-            <Text color="textSubtle">Do not try to stake on the website. Contract is not live until after Stealth Launch.</Text>
-            <Text color="text">DREGG is now available on <TelegramLink rel="noreferrer" target="_blank" href="https://www.traderjoexyz.com/#/trade?outputCurrency=0x88c090496125b751B4E3ce4d3FDB8E47DD079c57">Trader Joe, click here to buy DREGG</TelegramLink>.</Text> 
             <Text color="text">Please join our <TelegramLink rel="noreferrer" target="_blank" href="https://t.me/thedragonslairfarm">Telegram</TelegramLink> for further updates.</Text> 
-            <Text color="text">Stealth Launch is on the <strong>8th of September.</strong></Text> 
             <Text color="text">Farming Launches on the <strong>10th of September.</strong></Text>
           </div>
         </ContentWrapper>

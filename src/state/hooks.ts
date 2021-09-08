@@ -74,6 +74,7 @@ export const usePoolFromPid = (sousId): Pool => {
 export const usePriceWavaxUsdt = (): BigNumber => {
   const pid = 2 // USDT-WAVAX LP
   const farm = useFarmFromPid(pid)
+
   return farm.tokenPriceVsQuote ? new BigNumber(farm.tokenPriceVsQuote) : ZERO
 }
 
@@ -82,8 +83,10 @@ export const usePriceDreggUsdt = (): BigNumber => {
   // const bnbPriceUSD = usePriceBnbBusd()
   // const farm = useFarmFromPid(pid)
   // return farm.tokenPriceVsQuote ? bnbPriceUSD.times(farm.tokenPriceVsQuote) : ZERO
+
   const pid = 1; // DREGG-USDT LP
   const farm = useFarmFromPid(pid);
+  
   return farm.tokenPriceVsQuote ? new BigNumber(farm.tokenPriceVsQuote) : ZERO;
 }
 
