@@ -5,7 +5,7 @@ export default {
   },
   masterChef: {
     43113: '',
-    43114: '0xC0F19836931F5Ab43f279D4DD5Ab3089846Db264',
+    43114: '',
   },
   wavax: {
     43113: '',
