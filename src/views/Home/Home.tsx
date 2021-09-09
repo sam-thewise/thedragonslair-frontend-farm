@@ -148,10 +148,15 @@ const Home: React.FC = ( ) => {
         const userTokenRatio = userStakesFullInLPToken.div(new BigNumber(farm.lpTotalSupply))
 
         // we work out how much of the users tokens are in the staking pool in the quote token
-        const userLPTokens = new BigNumber(farm.quoteTokenBalanceLP)
+        let userLPTokens = new BigNumber(farm.quoteTokenBalanceLP)
           .div(new BigNumber(10).pow(farm.quoteTokenDecimals))
           .times(new BigNumber(2))
           .times(userTokenRatio)
+
+          if(farm.quoteTokenSymbol === "WAVAX"){
+            const usdValueOfWavaxLpTokens = userLPTokens.times(bnbPrice);
+            userLPTokens = usdValueOfWavaxLpTokens;
+          }
 
         totalValueUser = totalValueUser.plus( userLPTokens )
       }
