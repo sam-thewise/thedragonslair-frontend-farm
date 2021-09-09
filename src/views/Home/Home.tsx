@@ -220,7 +220,6 @@ const Home: React.FC = ( ) => {
             </CountdownBox>
 
             <Text color="text">Please join our <TelegramLink rel="noreferrer" target="_blank" href="https://t.me/thedragonslairfarm">Telegram</TelegramLink> for further updates.</Text> 
-            <Text color="text">Farming Launches on the <strong>10th of September.</strong></Text>
           </div>
         </ContentWrapper>
 
