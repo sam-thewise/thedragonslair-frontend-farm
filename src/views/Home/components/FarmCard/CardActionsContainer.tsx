@@ -59,9 +59,10 @@ interface FarmCardActionsProps {
   farm: FarmWithStakedValue
   ethereum?: provider
   account?: string
+  bnbPrice?: BigNumber
 }
 
-const CardActions: React.FC<FarmCardActionsProps> = ({ farm, ethereum, account }) => {
+const CardActions: React.FC<FarmCardActionsProps> = ({ farm, ethereum, account, bnbPrice }) => {
   const TranslateString = useI18n()
   const [requestedApproval, setRequestedApproval] = useState(false)
   const { pid, lpAddresses, tokenAddresses, isTokenOnly, depositFeeBP } = useFarmFromPid(farm.pid)
@@ -106,6 +107,10 @@ const CardActions: React.FC<FarmCardActionsProps> = ({ farm, ethereum, account }
         .times(userTokenRatio)
 
       totalValueUser = totalValueUser.plus( userLPTokens )
+      if(farm.quoteTokenSymbol === "WAVAX"){
+        const usdValueOfWavaxLpTokens = totalValueUser.times(bnbPrice);
+        totalValueUser = usdValueOfWavaxLpTokens;
+      }
     }
   }
 
