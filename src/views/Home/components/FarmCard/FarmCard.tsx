@@ -150,7 +150,7 @@ const FarmCard: React.FC<FarmCardProps> = ({ farm, removed, cakePrice, bnbPrice,
             )}
         </div>
       )}
-      <CardActionsContainer farm={farm} ethereum={ethereum} account={account} />
+      <CardActionsContainer farm={farm} ethereum={ethereum} account={account} bnbPrice={bnbPrice} />
       <div className="details">
         <Divider />
         <ExpandableSectionButton
