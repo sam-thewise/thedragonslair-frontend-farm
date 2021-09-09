@@ -185,6 +185,40 @@ const farms: FarmConfig[] = [
     },
     quoteTokenSymbol: QuoteToken.USDTe,
     quoteTokenAdresses: contracts.usdte,
+  },
+  {
+    pid: 11,
+    risk: 3,
+    lpSymbol: 'YAK',
+    isTokenOnly: true,
+    lpAddresses: {
+      43114: '0x980965fDf2f3FD0F10D88BcDcEeA146A4c7a1363',
+      43113: '',
+    },
+    tokenSymbol: 'YAK',
+    tokenAddresses: {
+      43114: '0x59414b3089ce2af0010e7523dea7e2b35d776ec7',
+      43113: '',
+    },
+    quoteTokenSymbol: QuoteToken.USDTe,
+    quoteTokenAdresses: contracts.usdte,
+  },
+  {
+    pid: 12,
+    risk: 3,
+    lpSymbol: 'ELK',
+    isTokenOnly: true,
+    lpAddresses: {
+      43114: '0x213E14EfEab6654d803589b621A5Cd106d233573',
+      43113: '',
+    },
+    tokenSymbol: 'ELK',
+    tokenAddresses: {
+      43114: '0xe1c110e1b1b4a1ded0caf3e42bfbdbb7b5d7ce1c',
+      43113: '',
+    },
+    quoteTokenSymbol: QuoteToken.USDTe,
+    quoteTokenAdresses: contracts.usdte,
   }
 ]
 
