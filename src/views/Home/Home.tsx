@@ -79,6 +79,7 @@ const StickySideBar = styled.div`
   position: fixed;
   top: 150px;
   left: 0;
+  z-index: 2000;
 `
 
 const TelegramLink = styled.a`
