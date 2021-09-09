@@ -30,7 +30,7 @@ const ContentWrapper = styled.div`
   margin-bottom: 16px;
   border-radius: 3px;
   border: 1px solid #efcd52;
-  backdrop-filter: blur(3px);
+  backdrop-filter: blur(4px);
 `
 
 const DarkContentWrapper = styled.div`
