@@ -64,7 +64,14 @@ const StakeAction: React.FC<FarmCardActionsProps> = ({ lpName, stakedBalance, to
   const { onStake } = useStake(pid)
   const { onUnstake } = useUnstake(pid)
 
-  const rawStakedBalance = getBalanceNumber(stakedBalance)
+  let decimals = 18;
+
+  if( pid === 5 )
+  {
+    decimals = 6;
+  }
+
+  const rawStakedBalance = getBalanceNumber(stakedBalance,decimals)
 
   const [onPresentDeposit] = useModal(<DepositModal max={tokenBalance} onConfirm={onStake} tokenName={tokenName} depositFeeBP={depositFeeBP} />)
   const [onPresentWithdraw] = useModal(
