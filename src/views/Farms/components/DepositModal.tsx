@@ -50,6 +50,7 @@ const DepositModal: React.FC<DepositModalProps> = ({ max, onConfirm, onDismiss, 
         <Button
           disabled={pendingTx}
           onClick={async () => {
+            // console.log('clicked')
             setPendingTx(true)
             await onConfirm(val)
             setPendingTx(false)
