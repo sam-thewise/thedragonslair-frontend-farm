@@ -147,7 +147,7 @@ const CardActions: React.FC<FarmCardActionsProps> = ({ farm, ethereum, account, 
     <>
         <div className="item shrink">
           <Label>DREGG Earned</Label>
-          <CakeHarvestBalance earningsSum={earningsFixed.toNumber()} fontSize="28px" decimals={2} />
+          <CakeHarvestBalance earningsSum={earningsFixed.toNumber()} fontSize="28px" decimals={4} />
           <CardValue color='textSubtle' value={earningDollars.toNumber()} decimals={2} prefix="~$" fontSize="14px" />
         </div>
         <div className="item shrink">

@@ -114,7 +114,7 @@ const FarmedStakingCard : React.FC<FarmStakingCardProps> = ({ totalValueLockedUs
           <div className="item shrink">
             
             <Label><strong>DREGG to Harvest</strong></Label>
-            <CakeHarvestBalance decimals={2} earningsSum={earningsSum}/>
+            <CakeHarvestBalance decimals={4} earningsSum={earningsSum}/>
             <Label><strong>~${(eggPrice * earningsSum).toFixed(2)}</strong></Label>
           </div>
         </div>
