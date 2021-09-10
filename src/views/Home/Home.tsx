@@ -220,7 +220,7 @@ const Home: React.FC = ( ) => {
           <div>
             <CountdownBox>
               <Text color="textSubtle">
-                Block Countdown to Farm Start: <strong>{currentBlock}</strong>
+                <strong>Farming has started!</strong>
               </Text>
             </CountdownBox>
 
