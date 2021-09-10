@@ -12,6 +12,7 @@ import { useApprove } from 'hooks/useApprove'
 import StakeAction from './StakeAction'
 import HarvestAction from './HarvestAction'
 import CakeHarvestBalance from '../CakeHarvestBalance'
+import { usePriceDreggUsdt } from '../../../../state/hooks'
 import CardValue from '../CardValue'
 
 const Action = styled.div`
@@ -71,6 +72,7 @@ const CardActions: React.FC<FarmCardActionsProps> = ({ farm, ethereum, account, 
   const tokenAddress = tokenAddresses[process.env.REACT_APP_CHAIN_ID];
   const lpName = farm.lpSymbol.toUpperCase()
   const isApproved = account && allowance && allowance.isGreaterThan(0)
+  const dreggPrice =  usePriceDreggUsdt().toNumber()
 
   let totalValueUser = new BigNumber(0)
 
@@ -85,7 +87,7 @@ const CardActions: React.FC<FarmCardActionsProps> = ({ farm, ethereum, account, 
 
     earningsFixed = new BigNumber(earnings).div( new BigNumber(10).pow(18));
 
-    earningDollars = earningsFixed.times( farm.tokenPriceVsQuote )
+    earningDollars = earningsFixed.times( dreggPrice )
 
 
     if( farm.isTokenOnly )
