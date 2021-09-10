@@ -22,6 +22,8 @@ import TotalValueLockedCard from './components/TotalValueLockedCard'
 
 import FarmCard, { FarmWithStakedValue } from './components/FarmCard/FarmCard'
 import FarmTabButtons from './components/FarmTabButtons'
+import FarmStatsWithTvl from './components/FarmStatsWithTvl'
+
 
 const ContentWrapper = styled.div`
   background: rgba(97,105,182,0.75);
@@ -217,15 +219,13 @@ const Home: React.FC = ( ) => {
         </Hero>
 
         <ContentWrapper>
-          <div>
-            <CountdownBox>
-              <Text color="textSubtle">
-                <strong>Farming has started!</strong>
-              </Text>
-            </CountdownBox>
-
-            <Text color="text">Please join our <TelegramLink rel="noreferrer" target="_blank" href="https://t.me/thedragonslairfarm">Telegram</TelegramLink> for further updates.</Text> 
-          </div>
+            <Cards>
+                <div className="twitter-box">
+                  <a className="twitter-timeline" data-width="500" data-height="430" data-theme="light" href="https://twitter.com/DRGNCRYPTOGAMIN?ref_src=twsrc%5Etfw">Tweets by DRGNCRYPTOGAMIN</a> 
+                </div>
+              <FarmStatsWithTvl/>
+            </Cards>
+          
         </ContentWrapper>
 
         <DarkContentWrapper>
