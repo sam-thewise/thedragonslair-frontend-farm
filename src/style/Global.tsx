@@ -11,9 +11,12 @@ const GlobalStyle = createGlobalStyle`
   * {
     font-family: 'Cinzel', sans-serif;
   }
+  html {
+    scroll-behavior: smooth;
+  
+  }
   body {
     background-color: ${({ theme }) => theme.colors.background};
-
     img {
       height: auto;
       max-width: 100%;

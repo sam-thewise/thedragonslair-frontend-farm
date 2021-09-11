@@ -9,7 +9,7 @@ import { BLOCKS_PER_YEAR, CAKE_PER_BLOCK, CAKE_POOL_PID } from 'config'
 import BigNumber from 'bignumber.js'
 import { useWallet } from '@binance-chain/bsc-use-wallet'
 import { provider } from 'web3-core'
-import { Heading, BaseLayout, Text, Link } from '@pancakeswap-libs/uikit'
+import { Heading, BaseLayout, Text, Link, Button } from '@pancakeswap-libs/uikit'
 import Page from 'components/layout/Page'
 import { useFarms, usePriceWavaxUsdt, usePriceDreggUsdt } from 'state/hooks'
 import useRefresh from 'hooks/useRefresh'
@@ -47,10 +47,59 @@ const DarkContentWrapper = styled.div`
 
 const Hero = styled.div`
   margin-bottom: 32px;
-  text-align: left;
+  text-align: center;
 
   h1{
     color: #fff;
+  }
+
+  .arrow-button{
+    background-color: rgb(97,105,182,0.5);
+  }
+
+  .arrow-container {
+    width: 22px;
+    animation: bounce 1600ms infinite cubic-bezier(0.445, 0.05, 0.55, 0.95);
+    cursor: pointer;
+    height: 20px;
+    overflow: hidden;
+  }
+  
+  .arrow-down {
+    height: 6px;
+    background: white;
+    transform: rotate(45deg);
+    transform-origin: 0% 0%;
+    border-radius: 5px;
+  }
+
+  .arrow-down:after {
+    content: '';
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    bottom: 0;
+    left: 100%;
+    border-radius: 5px;
+    background: white;
+    transform: rotate(-90deg);
+    transform-origin: 0% 100%;
+  }
+  
+  @keyframes bounce {
+  50% {
+      transform: translateY(-15px);
+    }
+  }
+
+  .farm-arrow{
+    overflow: hidden;
+    padding-top: 15px;
+    padding-bottom: 9px;
+  }
+
+  .go-to-farms {
+    float: left
   }
 `
 
@@ -214,8 +263,19 @@ const Home: React.FC = ( ) => {
         <Hero>
           <Heading as="h1" size="xl" mb="24px" color="secondary">
             The Dragon&apos;s Lair &ndash; Avalanche Yield Farm
-            
           </Heading>
+          
+            <a href="#farms">
+              <Button className="arrow-button">
+              <div className="farm-arrow">
+                <div className="go-to-farms"><pre>Go To Farms  </pre></div>
+                  <div className="arrow-container">
+                    <div className="arrow-down"/> 
+                  </div>
+              </div>
+            </Button></a>
+          
+            
         </Hero>
         <ContentWrapper>
             <Cards>
@@ -225,12 +285,12 @@ const Home: React.FC = ( ) => {
               <FarmStatsWithTvl/>
             </Cards>
         </ContentWrapper>
+        <div id="farms"/>
         <DarkContentWrapper>
           <div>
             <FarmStakingCard totalValueLockedUser={totalValueUser} farmsCountStakedUser={totalFarmsUser} />
           </div>
         </DarkContentWrapper>
-        
         <ContentWrapper>
           <div>
             <div>
