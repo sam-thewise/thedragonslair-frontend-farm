@@ -216,18 +216,6 @@ const Home: React.FC = ( ) => {
           </Heading>
         </Hero>
 
-        <ContentWrapper>
-          <div>
-            <CountdownBox>
-              <Text color="textSubtle">
-                <strong>Farming has started!</strong>
-              </Text>
-            </CountdownBox>
-
-            <Text color="text">Please join our <TelegramLink rel="noreferrer" target="_blank" href="https://t.me/thedragonslairfarm">Telegram</TelegramLink> for further updates.</Text> 
-          </div>
-        </ContentWrapper>
-
         <DarkContentWrapper>
           <div>
             <FarmStakingCard totalValueLockedUser={totalValueUser} farmsCountStakedUser={totalFarmsUser} />
