@@ -217,7 +217,6 @@ const Home: React.FC = ( ) => {
             
           </Heading>
         </Hero>
-
         <ContentWrapper>
             <Cards>
                 <div className="twitter-box">
@@ -225,9 +224,7 @@ const Home: React.FC = ( ) => {
                 </div>
               <FarmStatsWithTvl/>
             </Cards>
-          
         </ContentWrapper>
-
         <DarkContentWrapper>
           <div>
             <FarmStakingCard totalValueLockedUser={totalValueUser} farmsCountStakedUser={totalFarmsUser} />
