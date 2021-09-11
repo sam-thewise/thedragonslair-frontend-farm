@@ -58,7 +58,7 @@ const Hero = styled.div`
   }
 
   .arrow-container {
-    width: 22px;
+    width: 20px;
     animation: bounce 1600ms infinite cubic-bezier(0.445, 0.05, 0.55, 0.95);
     cursor: pointer;
     height: 20px;
