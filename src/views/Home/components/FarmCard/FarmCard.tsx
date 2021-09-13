@@ -46,7 +46,7 @@ const FCard = styled.div`
 const Divider = styled.div`
   background-color: ${({ theme }) => theme.colors.borderColor};
   height: 1px;
-  margin: 28px auto;
+  margin: 12px auto;
   width: 100%;
 `
 
