@@ -54,6 +54,7 @@ const Label = styled.div`
 
 const IconButtonWrapper = styled.div`
   display: flex;
+  flex-wrap: wrap;
   svg {
     width: 20px;
   }
