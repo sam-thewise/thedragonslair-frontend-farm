@@ -102,6 +102,23 @@ const farms: FarmConfig[] = [
     quoteTokenAdresses: contracts.usdte,
   },
   {
+    pid: 13,
+    risk: 3,
+    lpSymbol: 'DAI.e',
+    isTokenOnly: true,
+    lpAddresses: {
+      43114: '0xa6908c7e3be8f4cd2eb704b5cb73583ebf56ee62',
+      43113: '',
+    },
+    tokenSymbol: 'DAI.e',
+    tokenAddresses: {
+      43114: '0xd586e7f844cea2f87f50152665bcbc2c279d8d70',
+      43113: '',
+    },
+    quoteTokenSymbol: QuoteToken.USDTe,
+    quoteTokenAdresses: contracts.usdte,
+  },
+  {
     pid: 6,
     risk: 3,
     lpSymbol: 'TUNDRA',

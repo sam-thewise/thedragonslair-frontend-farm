@@ -37,8 +37,7 @@ const ContentWrapper = styled.div`
 
 const DarkContentWrapper = styled.div`
   background: rgba(0,0,0,0.75);
-  padding: 16px;
-  padding-top: 32px;
+  padding: 12px;
   margin-bottom: 16px;
   border-radius: 3px;
   border: 1px solid #efcd52;
