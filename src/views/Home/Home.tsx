@@ -25,6 +25,22 @@ import FarmTabButtons from './components/FarmTabButtons'
 import FarmStatsWithTvl from './components/FarmStatsWithTvl'
 
 
+const Banner = styled.div`
+  
+  margin-bottom: 30px;
+  text-align: center;
+
+  a, img{
+    margin: 0;
+    padding: 0;
+  }
+
+  img{
+    border: 2px solid rgba(97,105,182,0.75);
+    max-width: 75%;
+  }
+`
+
 const ContentWrapper = styled.div`
   background: rgba(97,105,182,0.75);
   padding: 16px;
@@ -260,6 +276,12 @@ const Home: React.FC = ( ) => {
     <div>
       <Page>
         <Hero>
+          <Banner>
+            <a href="https://tinydragon.games/lottery" rel="noreferrer" target="_blank">
+              <img src="/images/2.png" alt="Dragon Fire Lottery" />
+            </a>
+          </Banner>
+
           <Heading as="h1" size="xl" mb="24px" color="secondary">
             The Dragon&apos;s Lair &ndash; Avalanche Yield Farm
           </Heading>
