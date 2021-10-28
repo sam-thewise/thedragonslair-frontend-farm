@@ -277,8 +277,8 @@ const Home: React.FC = ( ) => {
       <Page>
         <Hero>
           <Banner>
-            <a href="https://tinydragon.games/lottery" rel="noreferrer" target="_blank">
-              <img src="/images/2.png" alt="Dragon Fire Lottery" />
+            <a href="https://dragoncrypto.io/" rel="noreferrer" target="_blank">
+              <img src="/images/swap-banner.png" alt="SWAP Your DREGG to PDCAU" />
             </a>
           </Banner>
 
