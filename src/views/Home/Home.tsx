@@ -283,7 +283,7 @@ const Home: React.FC = ( ) => {
           </Banner>
 
           <Heading as="h1" size="xl" mb="24px" color="secondary">
-            The Dragon&apos;s Lair &ndash; Avalanche Yield Farm
+            The Dragon&apos;s Lair &ndash; Emissions Ended <a href="https://dragoncrypto.io/" style={ { textDecoration:'underline', color:'#d3c0fa', textShadow: '0 0 5px #000,0 0 5px #000' }} rel="noreferrer" target="_blank">Swap now to L2 $PDCAU</a>
           </Heading>
           
             <a href="#farms">
