@@ -99,12 +99,12 @@ const FarmCard: React.FC<FarmCardProps> = ({ farm, removed, cakePrice, bnbPrice,
     : '-'
 
   const lpLabel = farm.lpSymbol
-  const earnLabel = 'DREGG'
-  const farmAPYNumber =  farm.apy && farm.apy.times(new BigNumber(100)).toNumber()
-  const farmAPY = farmAPYNumber.toLocaleString(undefined, {
-    minimumFractionDigits: 2,
-    maximumFractionDigits: 2,
-  })
+  // const earnLabel = 'DREGG'
+  // const farmAPYNumber = 0  //farm.apy && farm.apy.times(new BigNumber(100)).toNumber()
+  const farmAPY = 0 // farmAPYNumber.toLocaleString(undefined, {
+    // minimumFractionDigits: 2,
+    // maximumFractionDigits: 2,
+  // })
 
   const { quoteTokenAdresses, quoteTokenSymbol, tokenAddresses, risk } = farm
 
