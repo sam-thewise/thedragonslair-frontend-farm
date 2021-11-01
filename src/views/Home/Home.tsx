@@ -277,13 +277,13 @@ const Home: React.FC = ( ) => {
       <Page>
         <Hero>
           <Banner>
-            <a href="https://dragoncrypto.io/" rel="noreferrer" target="_blank">
+            {/* <a href="https://dragoncrypto.io/" rel="noreferrer" target="_blank">
               <img src="/images/swap-banner.png" alt="SWAP Your DREGG to PDCAU" />
-            </a>
+            </a> */}
           </Banner>
 
           <Heading as="h1" size="xl" mb="24px" color="secondary">
-            The Dragon&apos;s Lair &ndash; Emissions Ended <a href="https://dragoncrypto.io/" style={ { textDecoration:'underline', color:'#d3c0fa', textShadow: '0 0 5px #000,0 0 5px #000' }} rel="noreferrer" target="_blank">Swap now to L2 $PDCAU</a>
+            The Dragon&apos;s Lair &ndash; Emissions Ended SWAP to PDCAU Ended - DCAU Coming Soon!
           </Heading>
           
             <a href="#farms">
